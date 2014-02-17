@@ -1,0 +1,9 @@
+GEM
+  specs:
+    awesome_print (1.2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print
