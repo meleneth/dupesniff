@@ -19,3 +19,7 @@ require 'dupesniff'
 sniffer = Dupesniff.new
 
 ap sniffer
+
+sniffer.import_dir(".")
+sniffer.dump()
+

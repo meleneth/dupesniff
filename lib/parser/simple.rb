@@ -1,5 +1,5 @@
 require 'parser'
 
-class SimpleParser < Parser;
+class SimpleParser < Parser
 
-end;
+end
