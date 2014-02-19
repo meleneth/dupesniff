@@ -30,6 +30,8 @@ class Dupesniff
   end
 
   def import_line(line)
+    line.encode!('utf-16', 'utf-8', :invalid => :replace, :replace => '')
+    line.encode!('utf-8', 'utf-16')
     line.gsub!(/^\s+/, '')
     line.gsub!(/\s+$/, '')
     @lines[line] = @lines[line] + 1
