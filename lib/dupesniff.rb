@@ -4,7 +4,6 @@ require 'find'
 class Dupesniff
   attr_accessor :current_filename
 
-
   def initialize
     @parser = SimpleParser.new
     @current_path = nil
@@ -38,7 +37,7 @@ class Dupesniff
   end
 
   def is_code_path?(path)
-    return true if path.match(/\.(vbs|rb|rb|pl|pm)$/)
+    return true if path.match(/\.(vbs|rb|pl|pm|cmd)$/)
     return false
   end
 
