@@ -25,8 +25,9 @@ class Scriptviz
 
   def process_scripts
     matcher = Regexp.new "(#{@script_names.values.uniq.join("|")})"
-    colormap = {'vbs' => 'blue', 'rb' => 'yellow', 'pl' => 'green', 'pm' => 'green', 'cmd' => 'gray'}
+    colormap = {'vbs' => 'lightblue', 'rb' => 'yellow', 'pl' => 'aquamarine', 'pm' => 'aquamarine', 'cmd' => 'lightgray', 'cs' => 'cyan3'}
     puts "digraph G {"
+    puts "node [style=filled]"
     @script_names.keys.each do |path|
       File.foreach(path) do |line|
         match = matcher.match(line)
