@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'awesome_print'
+
+require 'find'
+
+class FindSameNameSources
+  def initialize
+    @path_by_filename = Hash.new
+  end
+
+  def check_dir(dir)
+    Find.find(dir) do |path|
+      next unless is_code_path? path
+      check_file(path)
+    end
+  end
+
+  def check_file(path)
+    filename = File.basename path
+    if @path_by_filename.has_key? filename then
+      puts "Dupe #{path}: -> #{@path_by_filename[filename]}" 
+    end
+
+    @path_by_filename[filename] = path
+  end
+
+  def is_code_path?(path)
+    return true if path.match(/\.(c|cpp|hpp|h|rb|py|au3)$/)
+    return false
+  end
+
+end
+
+app = FindSameNameSources.new
+app.check_dir(".")
+

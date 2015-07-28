@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'awesome_print'
+
+require 'find'
+
+class ClangReformatAll
+  def reformat_dir(dir)
+    Find.find(dir) do |path|
+      next unless is_code_path? path
+      reformat_file(path)
+    end
+  end
+
+  def reformat_file(path)
+    system("clang-format-3.5", "-style=Google", "-i", path)
+  end
+
+  def is_code_path?(path)
+    return true if path.match(/\.(c|cpp|hpp|h)$/)
+    return false
+  end
+
+end
+
+app = ClangReformatAll.new
+app.reformat_dir(".")
+
